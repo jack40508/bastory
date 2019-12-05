@@ -1,0 +1,18 @@
+body{
+  background-image:url('/img/home/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.full_page{
+  height: 100vh;
+}
+
+.card_input_profile{
+  margin:5vh auto;
+  max-width: 70%;
+  height: 90vh;
+  background-color:rgba(0,0,0,0.7);
+  /*opacity:0.7;*/
+}
