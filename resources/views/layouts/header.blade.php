@@ -58,14 +58,11 @@
     </nav>
     <div class="container-fluid">
       <div class="row mt-5">
-        <div class="col-md-2">
+        <div class="col-md-3">
           @include('layouts.leftarea')
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
           @yield('content')
-        </div>
-        <div class="col-md-2">
-          @yield('calendar')
         </div>
       </div>
     </div>
