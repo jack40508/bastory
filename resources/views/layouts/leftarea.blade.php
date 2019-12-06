@@ -8,9 +8,9 @@
         </div>
         <div class="card-body">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Profile</li>
-            <li class="list-group-item">My Team</li>
-            <li class="list-group-item">My Event</li>
+            <li class="list-group-item">プロフィール</li>
+            <li class="list-group-item">私のチーム</li>
+            <li class="list-group-item">私のイベント</li>
           </ul>
         </div>
       </div>
