@@ -1,39 +1,38 @@
 <?php
 
-namespace App\Team;
+namespace App\Team\Event;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Team\Team;
 use App\User;
-use App\Area;
-use App\Team\Event\Event;
 
-class Team extends Model
+class Event extends Model
 {
     //
-    protected $table = 'teams';
+    protected $table = 'events';
     protected $fillable = [
       'name',
-      'area_id',
-      'leader_id',
-      'about',
+      'team_id',
+      'rival',
+      'eventtype_id',
+      'location',
+      'address',
+      'datetime',
+      'gathertime',
+      'contant',
     ];
 
     /*------------------------------------------------------------------------**
     ** Relation 定義                                                          **
     **------------------------------------------------------------------------*/
 
-    public function area()
+    public function team()
     {
-        return $this->belongsTo(Area::class);
+        return $this->belongsTo(Team::class);
     }
 
     public function players()
     {
         return $this->belongsToMany(User::class);
-    }
-
-    public function events()
-    {
-        return $this->hasMany(User::class);
     }
 }

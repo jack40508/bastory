@@ -63,11 +63,11 @@
       </div>
     </nav>
     <div class="container-fluid">
-      <div class="row mt-5">
-        <div class="col-md-3">
+      <div class="row">
+        <div class="col-md-3 mt-5">
           @include('layouts.leftarea')
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 mt-3">
           @yield('content')
         </div>
       </div>
