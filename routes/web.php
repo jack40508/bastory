@@ -13,3 +13,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::put('/replyevent/{event_user_id}/{reply}','EventController@event_reply_update');
+
+Route::resource('/team','TeamController');

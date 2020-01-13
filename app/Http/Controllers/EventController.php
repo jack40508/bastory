@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Event;
+use App\Team\Event\Event;
+use App\Team\Event\EventUser;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -81,5 +82,15 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+
+    public function event_reply_update(int $eventuser_id,int $reply)
+    {
+        //
+        $eventuser = EventUser::where('id',$eventuser_id)->first();
+        $eventuser->reply = $reply;
+        $eventuser->save();
+
+        return redirect('/');
     }
 }

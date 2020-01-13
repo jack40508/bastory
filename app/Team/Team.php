@@ -36,4 +36,9 @@ class Team extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function leader()
+    {
+        return $this->belongsTo(User::class)->where('id', $this->leader_id);
+    }
 }

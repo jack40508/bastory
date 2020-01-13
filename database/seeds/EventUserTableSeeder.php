@@ -30,5 +30,11 @@ class EventUserTableSeeder extends Seeder
         'user_id' =>  '1',
         'reply' =>  '-1',
       ]);
+
+      EventUser::create([
+        'event_id' =>  '4',
+        'user_id' =>  '1',
+        'reply' =>  '-1',
+      ]);
     }
 }

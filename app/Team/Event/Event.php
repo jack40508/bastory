@@ -5,6 +5,7 @@ namespace App\Team\Event;
 use Illuminate\Database\Eloquent\Model;
 use App\Team\Team;
 use App\User;
+use App\Team\Event\Eventtype;
 
 class Event extends Model
 {
@@ -34,5 +35,10 @@ class Event extends Model
     public function players()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function eventtype()
+    {
+        return $this->belongsTo(Eventtype::class);
     }
 }

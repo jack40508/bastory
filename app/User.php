@@ -51,21 +51,21 @@ class User extends Authenticatable
 
     public function events()
     {
-        return $this->belongsToMany(Event::class);
+        return $this->belongsToMany(Event::class)->withPivot('id','reply');
     }
 
     public function join_events()
     {
-        return $this->belongsToMany(Event::class)->where('reply','1');
+        return $this->belongsToMany(Event::class)->where('reply','1')->withPivot('id','reply');
     }
 
     public function nojoin_events()
     {
-        return $this->belongsToMany(Event::class)->where('reply','0');
+        return $this->belongsToMany(Event::class)->where('reply','0')->withPivot('id','reply');
     }
 
     public function noreply_events()
     {
-        return $this->belongsToMany(Event::class)->where('reply','-1');
+        return $this->belongsToMany(Event::class)->where('reply','-1')->withPivot('id','reply');
     }
 }
