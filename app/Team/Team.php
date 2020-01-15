@@ -22,23 +22,19 @@ class Team extends Model
     ** Relation 定義                                                          **
     **------------------------------------------------------------------------*/
 
-    public function area()
-    {
+    public function area(){
         return $this->belongsTo(Area::class);
     }
 
-    public function players()
-    {
+    public function players(){
         return $this->belongsToMany(User::class);
     }
 
-    public function events()
-    {
-        return $this->hasMany(User::class);
+    public function events(){
+        return $this->hasMany(Event::class);
     }
 
-    public function leader()
-    {
+    public function leader(){
         return $this->belongsTo(User::class)->where('id', $this->leader_id);
     }
 }

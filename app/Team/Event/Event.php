@@ -27,18 +27,15 @@ class Event extends Model
     ** Relation 定義                                                          **
     **------------------------------------------------------------------------*/
 
-    public function team()
-    {
+    public function team(){
         return $this->belongsTo(Team::class);
     }
 
-    public function players()
-    {
-        return $this->belongsToMany(User::class);
+    public function players(){
+        return $this->belongsToMany(User::class)->withPivot('id','reply');
     }
 
-    public function eventtype()
-    {
+    public function eventtype(){
         return $this->belongsTo(Eventtype::class);
     }
 }

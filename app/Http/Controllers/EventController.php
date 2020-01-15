@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Team\Event\Event;
 use App\Team\Event\EventUser;
 use Illuminate\Http\Request;
+use App\Team\Event\EventRepository;
 
 class EventController extends Controller
 {
+    public function __construct(EventRepository $event)
+    {
+        $this->event = $event;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,6 +33,10 @@ class EventController extends Controller
     public function create()
     {
         //
+        $eventtypes = $this->event->getEventtypeList();
+        $teams = Auth::user()->teams->pluck('name', 'id');
+
+        return view("/event/create",compact('eventtypes','teams'));
     }
 
     /**
@@ -37,6 +48,9 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
+        $this->event->createEvent($request);
+
+        return redirect('/');
     }
 
     /**
@@ -87,10 +101,8 @@ class EventController extends Controller
     public function event_reply_update(int $eventuser_id,int $reply)
     {
         //
-        $eventuser = EventUser::where('id',$eventuser_id)->first();
-        $eventuser->reply = $reply;
-        $eventuser->save();
+        $this->event->update_reply($eventuser_id,$reply);
 
-        return redirect('/');
+        return redirect()->back();
     }
 }

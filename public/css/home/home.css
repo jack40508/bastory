@@ -3,3 +3,8 @@
   box-shadow:3px 3px 12px gray;
   position: fixed;
 }
+
+.list_event{
+  overflow-y: auto;
+  height: 75vh;
+}

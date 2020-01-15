@@ -3,14 +3,17 @@
 @section('content')
 <div class="row">
   <div class="d-none d-md-block col-md-3 mt-5">
-    @include('layouts.leftarea')
+    @include('layouts.leftarea_user')
   </div>
   <div class="col-xs-12 col-md-9 mt-3">
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="list-event" role="tabpanel" aria-labelledby="list-event-list">
         <ul class="nav nav-tabs" id="myEventTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="event_reply_tab" data-toggle="tab" href="#event_reply" role="tab" aria-controls="event_reply" aria-selected="true">未回答</a>
+            <a class="nav-link active" id="event_tab" data-toggle="tab" href="#event" role="tab" aria-controls="event" aria-selected="true">一覽</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="event_reply_tab" data-toggle="tab" href="#event_reply" role="tab" aria-controls="event_reply" aria-selected="true">未回答</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="event_join_tab" data-toggle="tab" href="#event_join" role="tab" aria-controls="event_join" aria-selected="false">参加</a>
@@ -19,20 +22,31 @@
             <a class="nav-link" id="event_nojoin_tab" data-toggle="tab" href="#event_nojoin" role="tab" aria-controls="event_nojoin" aria-selected="false">未参加</a>
           </li>
         </ul>
-        <div class="tab-content" id="myEventTabContent">
-          <div class="tab-pane fade show active" id="event_reply" role="tabpanel" aria-labelledby="event_reply_tab">
-            @foreach(Auth::user()->noreply_events as $event)
+        <div class="tab-content list_event" id="myEventTabContent">
+          <div class="tab-pane fade show active" id="event" role="tabpanel" aria-labelledby="event_reply_tab">
+            @foreach(Auth::user()->events as $event)
               @include('layouts.card-event')
+            @endforeach
+          </div>
+          <div class="tab-pane fade show" id="event_reply" role="tabpanel" aria-labelledby="event_reply_tab">
+            @foreach(Auth::user()->events as $event)
+              @if($event->pivot->reply == -1)
+                @include('layouts.card-event')
+              @endif
             @endforeach
           </div>
           <div class="tab-pane fade" id="event_join" role="tabpanel" aria-labelledby="event_join_tab">
-            @foreach(Auth::user()->join_events as $event)
-              @include('layouts.card-event')
+            @foreach(Auth::user()->events as $event)
+              @if($event->pivot->reply == 1)
+                @include('layouts.card-event')
+              @endif
             @endforeach
           </div>
           <div class="tab-pane fade" id="event_nojoin" role="tabpanel" aria-labelledby="event_nojoin_tab">
-            @foreach(Auth::user()->nojoin_events as $event)
-              @include('layouts.card-event')
+            @foreach(Auth::user()->events as $event)
+              @if($event->pivot->reply == 0)
+                @include('layouts.card-event')
+              @endif
             @endforeach
           </div>
         </div>

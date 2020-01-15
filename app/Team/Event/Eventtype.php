@@ -13,8 +13,7 @@ class Eventtype extends Model
       'name',
     ];
 
-    public function events()
-    {
+    public function events(){
       return $this->hasMany(Event::class);
     }
 }

@@ -6,6 +6,7 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">エリア：{{ $team->area->name }}</li>
             <li class="list-group-item">レーダー：{{ $team->leader->name }}</li>
+            <li class="list-group-item">メンバー数：{{ $team->players->count() }}人</li>
           </ul>
       </div>
     </div>

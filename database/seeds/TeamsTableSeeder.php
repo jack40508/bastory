@@ -14,14 +14,14 @@ class TeamsTableSeeder extends Seeder
     {
       Team::create([
         'name' => '阪神虎',
-        'area_id' => '1',
+        'area_id' => '33',
         'leader_id' => '1',
         'about' =>  'Test team1',
       ]);
 
       Team::create([
         'name' => '読売巨人',
-        'area_id' => '2',
+        'area_id' => '41',
         'leader_id' => '1',
         'about' =>  'Test team2',
       ]);
