@@ -45,14 +45,14 @@
   <div class="col-md-12 mt-3">
     <h4>参加メンバー</h4>
     <nav>
-      <div class="nav nav-tabs" id="nav-tab-{{ $event->id }}" role="tablist">
-        <a class="nav-item nav-link active" id="nav-join-tab-{{ $event->id }}" data-toggle="tab" href="#nav-join-{{ $event->id }}" role="tab" aria-controls="nav-join" aria-selected="true">参加</a>
-        <a class="nav-item nav-link" id="nav-nojoin-tab-{{ $event->id }}" data-toggle="tab" href="#nav-nojoin-{{ $event->id }}" role="tab" aria-controls="nav-nojoin" aria-selected="false">不参加</a>
-        <a class="nav-item nav-link" id="nav-noreply-tab-{{ $event->id }}" data-toggle="tab" href="#nav-noreply-{{ $event->id }}" role="tab" aria-controls="nav-noreply" aria-selected="false">未回答</a>
+      <div class="nav nav-tabs" id="nav-tab-{{ $tab }}-{{ $event->id }}" role="tablist">
+        <a class="nav-item nav-link active" id="nav-join-tab-{{ $tab }}-{{ $event->id }}" data-toggle="tab" href="#nav-join-{{ $tab }}-{{ $event->id }}" role="tab" aria-controls="nav-join" aria-selected="true">参加</a>
+        <a class="nav-item nav-link" id="nav-nojoin-tab-{{ $tab }}-{{ $event->id }}" data-toggle="tab" href="#nav-nojoin-{{ $tab }}-{{ $event->id }}" role="tab" aria-controls="nav-nojoin" aria-selected="false">不参加</a>
+        <a class="nav-item nav-link" id="nav-noreply-tab-{{ $tab }}-{{ $event->id }}" data-toggle="tab" href="#nav-noreply-{{ $tab }}-{{ $event->id }}" role="tab" aria-controls="nav-noreply" aria-selected="false">未回答</a>
       </div>
     </nav>
-    <div class="tab-content" id="nav-tabContent-{{ $event->id }}">
-      <div class="tab-pane fade show active" id="nav-join-{{ $event->id }}" role="tabpanel" aria-labelledby="nav-join-tab">
+    <div class="tab-content" id="nav-tabContent-{{ $tab }}-{{ $event->id }}">
+      <div class="tab-pane fade show active" id="nav-join-{{ $tab }}-{{ $event->id }}" role="tabpanel" aria-labelledby="nav-join-tab">
         <div class="row">
           @foreach($event->players as $player)
             @if($player->pivot->reply == 1)
@@ -68,7 +68,7 @@
           @endforeach
         </div>
       </div>
-      <div class="tab-pane fade" id="nav-nojoin-{{ $event->id }}" role="tabpanel" aria-labelledby="nav-nojoin-tab">
+      <div class="tab-pane fade" id="nav-nojoin-{{ $tab }}-{{ $event->id }}" role="tabpanel" aria-labelledby="nav-nojoin-tab">
         <div class="row">
           @foreach($event->players as $player)
             @if($player->pivot->reply == 0)
@@ -84,7 +84,7 @@
           @endforeach
         </div>
       </div>
-      <div class="tab-pane fade" id="nav-noreply-{{ $event->id }}" role="tabpanel" aria-labelledby="nav-noreply-tab">
+      <div class="tab-pane fade" id="nav-noreply-{{ $tab }}-{{ $event->id }}" role="tabpanel" aria-labelledby="nav-noreply-tab">
         <div class="row">
           @foreach($event->players as $player)
             @if($player->pivot->reply == -1)

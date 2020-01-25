@@ -20,7 +20,7 @@
       <div class="container-fluid">
         <div class="row justify-content-end full_page">
           <div class="col-md-6">
-            <div class="card text-white card_input_profile">
+            <div class="card text-white card_login">
               <div class="card-header"><h1>Bastory</h1></div>
                 <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">

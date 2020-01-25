@@ -9,10 +9,17 @@ body{
   height: 100vh;
 }
 
-.card_input_profile{
+.card_login{
   margin:5vh auto;
   max-width: 70%;
   height: 90vh;
+  background-color:rgba(0,0,0,0.7);
+  /*opacity:0.7;*/
+}
+
+.card_input_profile{
+  margin:5vh auto;
+  max-width: 70%;
   background-color:rgba(0,0,0,0.7);
   /*opacity:0.7;*/
 }
