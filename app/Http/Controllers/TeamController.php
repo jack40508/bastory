@@ -156,9 +156,17 @@ class TeamController extends Controller
 
     public function cancel_apply($team_id)
     {
-      $this->team->cancel_apply($team_id);
+      $this->team->cancelApply($team_id);
       $team = $this->team->getTeam($team_id);
 
       return redirect('/myteam');
+    }
+
+    public function check_apply($team_id,$user_id)
+    {
+      $this->team->checkApply($team_id,$user_id);
+      $team = $this->team->getTeam($team_id);
+
+      return redirect('team/'.$team->id.'/member');
     }
 }

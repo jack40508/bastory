@@ -94,7 +94,7 @@ class TeamRepository
       $newrelation->save();
 		}
 
-		public function cancel_apply($team_id){
+		public function cancelApply($team_id){
 			//destroy Relation
 			$team = $this->getTeam($team_id);
 
@@ -108,6 +108,22 @@ class TeamRepository
 			}
 
 			$this->teamuser->where('user_id',Auth::user()->id)->where('team_id',$team_id)->delete();
+		}
+
+		public function checkApply($team_id,$user_id){
+			$teamuser = $this->teamuser->where('team_id',$team_id)->where('user_id',$user_id)->first();
+			$teamuser->check = true;
+			$teamuser->save();
+
+			$team = $this->getTeam($team_id);
+
+			foreach ($team->events as $event) {
+				$eventuser = new EventUser;
+				$eventuser->event_id = $event->id;
+				$eventuser->user_id = $user_id;
+				$eventuser->reply = -1;
+				$eventuser->save();
+			}
 		}
 
 		public function checkMember($team){

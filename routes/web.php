@@ -25,6 +25,8 @@ Route::resource('/team','TeamController');
 Route::get('/team/{team_id}/member','TeamController@member');
 Route::get('/team/{team_id}/profile','TeamController@profile');
 Route::put('/teamuser/{team_id}','TeamController@apply');
+Route::put('/teamuser/{team_id}/{user_id}/check','TeamController@check_apply');
 Route::put('/teamuser/{team_id}/destroy','TeamController@cancel_apply');
+
 
 Route::resource('/event','EventController');

@@ -41,14 +41,14 @@
       @if($player->pivot->check == false)
         <div class="col-md-4">
           <div class="card card-member align-items-center">
-            @if($team->leader_id == Auth::user()->id)
-            {!! Form::open(['url'=>'/teamuser/'.$team->id.'/'.$player->id.'/check','method'=>'PUT']) !!}
-              {!! Form::submit('申込確認',['class'=>'btn btn-info form-control col-md-12']) !!}
-            {!! Form::close() !!}
-            @endif
             <div class="card-body">
               <img class="profile-img-top" src="/img/user_profile/user_profile_{{ $player->id }}.jpg" alt="user_profile" style="width:12vh; height:12vh;">
               <h5>{{ $player->name }}</h5>
+              @if($team->leader_id == Auth::user()->id)
+              {!! Form::open(['url'=>'/teamuser/'.$team->id.'/'.$player->id.'/check','method'=>'PUT']) !!}
+                {!! Form::submit('申込確認',['class'=>'btn btn-info form-control col-md-12']) !!}
+              {!! Form::close() !!}
+              @endif
             </div>
           </div>
         </div>
