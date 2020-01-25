@@ -16,11 +16,19 @@ class TeamUserTableSeeder extends Seeder
         TeamUser::create([
           'team_id' =>  '1',
           'user_id' =>  '1',
+          'check' => '1',
         ]);
 
         TeamUser::create([
           'team_id' =>  '2',
           'user_id' =>  '1',
+          'check' => '1',
+        ]);
+
+        TeamUser::create([
+          'team_id' =>  '2',
+          'user_id' =>  '2',
+          'check' => '1',
         ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Team;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use Auth;
 use App\Area;
 use App\Team\Event\Event;
 
@@ -27,7 +28,7 @@ class Team extends Model
     }
 
     public function players(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('id','check');;
     }
 
     public function events(){
@@ -36,5 +37,26 @@ class Team extends Model
 
     public function leader(){
         return $this->belongsTo(User::class)->where('id', $this->leader_id);
+    }
+
+    /*------------------------------------------------------------------------**
+    ** Function 定義                                                          **
+    **------------------------------------------------------------------------*/
+
+    public function checkApply(){
+      if($this->players->where('id',Auth::user()->id)->count() >= 1)
+				return true;
+			else
+				return false;
+    }
+
+    public function checkMember(){
+
+      if($this->checkApply() == true){
+        if($this->players->where('id',Auth::user()->id)->first()->pivot->check == true)
+  				return true;
+      }
+  		else
+  			return false;
     }
 }

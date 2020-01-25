@@ -1,6 +1,6 @@
 <div class="justify-content-center">
-    <div class="card">
-      <img class="card-img-top" src="/img/team/logo/logo_{{ $team->id }}.jpg" alt="team_logo" style="padding:10px;">
+    <div class="card align-items-center">
+      <img class="card-img-top mt-2" src="/img/team/logo/logo_{{ $team->id }}.jpg" alt="team_logo" style="width:25vh; height:25vh;">
       <div class="card-body">
         <h4 class="card-title"><a href="/team/{{ $team->id }}">{{ $team->name }}</a></h4>
           <ul class="list-group list-group-flush">

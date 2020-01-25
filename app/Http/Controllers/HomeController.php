@@ -23,6 +23,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $nowpage = 'event';
+        return view('home/myevent',compact('nowpage'));
+    }
+
+    public function team()
+    {
+        $nowpage = 'team';
+        return view('home/myteam',compact('nowpage'));
+    }
+
+    public function profile()
+    {
+        $nowpage = 'profile';
+        return view('home/myprofile',compact('nowpage'));
     }
 }

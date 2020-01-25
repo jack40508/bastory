@@ -22,7 +22,7 @@ class TeamsTableSeeder extends Seeder
       Team::create([
         'name' => '読売巨人',
         'area_id' => '41',
-        'leader_id' => '1',
+        'leader_id' => '2',
         'about' =>  'Test team2',
       ]);
     }

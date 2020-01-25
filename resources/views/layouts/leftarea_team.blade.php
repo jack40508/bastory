@@ -1,15 +1,18 @@
-<div class="container">
-  <div class="justify-content-center">
-      <div class="card card_profile">
-        <img class="card-img-top" src="/img/team/logo/logo_{{ $team->id }}.jpg" alt="team_profile" style="padding:10px;">
-        <div class="card-body">
-          <h5 class="card-title">{{ $team->name }}</h5>
-          <div class="list-group list-group-flush" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" id="list-event-list" data-toggle="list" href="#list-event" role="tab" aria-controls="event">イベント</a>
-            <a class="list-group-item list-group-item-action" id="list-team-member" data-toggle="list" href="#list-member" role="tab" aria-controls="member">メンバー</a>
-            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">プロフィール</a>
-          </div>
-        </div>
-      </div>
+<div class="mt-5">
+  <img class="profile-img-top" src="/img/team/logo/logo_{{ $team->id }}.jpg" alt="team_logo" style="width:25vh; height:25vh;">
+  <h3 class="mt-2">{{ $team->name }}</h3>
+  <div class="list-group list-group-flush">
+    <a href="/team/{{ $team->id }}" class="list-group-item list-group-item-action list-group-item-light bg-dark
+    @if ($nowpage == "event")
+    active
+    @endif">イベント</a>
+    <a href="/team/{{ $team->id }}/member" class="list-group-item list-group-item-action list-group-item-light bg-dark
+    @if ($nowpage == "member")
+    active
+    @endif">メンバー</a>
+    <a href="/team/{{ $team->id }}/profile" class="list-group-item list-group-item-action list-group-item-light bg-dark
+    @if ($nowpage == "profile")
+    active
+    @endif">プロフィール</a>
   </div>
 </div>

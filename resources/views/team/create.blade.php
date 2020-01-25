@@ -13,7 +13,7 @@
 		        </div>
             <div class="form-group row">
 		          {!! Form::label('エリア：',"",['class'=>'col-md-4 text-md-right']) !!}
-              {!! Form::select('area', $areas, null ) !!}
+              {!! Form::select('area', $areas, null, ['class'=>'form-control col-md-6'] ) !!}
 		        </div>
             <div class="form-group row">
 		          {!! Form::label('チームロゴ：',"",['class'=>'col-md-4 text-md-right']) !!}
@@ -21,13 +21,12 @@
 		        </div>
             <div class="form-group row">
 		          {!! Form::label('紹介：',"",['class'=>'col-md-4 text-md-right']) !!}
-              {!! Form::textarea('about', null, ['maxlength'=>'40','width' => '100%']) !!}
+              {!! Form::textarea('about', null, ['class'=>'form-control col-md-6', 'maxlength'=>'40']) !!}
 		        </div>
-            {!! Form::submit('送信',['class'=>'btn btn-secondary form-control']) !!}
-            {!! Form::close() !!}
           </div><!--card body-->
-          <div class="card-footer">
-
+          <div class="card-footer row justify-content-center">
+            {!! Form::submit('送信',['class'=>'btn btn-secondary form-control col-md-4']) !!}
+            {!! Form::close() !!}
           </div><!--card footer-->
       </div><!--card-->
     </div>

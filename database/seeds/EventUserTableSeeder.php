@@ -26,6 +26,12 @@ class EventUserTableSeeder extends Seeder
       ]);
 
       EventUser::create([
+        'event_id' =>  '2',
+        'user_id' =>  '2',
+        'reply' =>  '-1',
+      ]);
+
+      EventUser::create([
         'event_id' =>  '3',
         'user_id' =>  '1',
         'reply' =>  '-1',

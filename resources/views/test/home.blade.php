@@ -2,12 +2,16 @@
 
 @section('content')
 <div class="row">
-  <div class="d-none d-md-block col-md-3 mt-5">
+  <div class="sidenav bg-dark d-none d-md-block col-md-2">
     @include('layouts.leftarea_user')
   </div>
-  <div class="col-xs-12 col-md-9 mt-3">
+  <div class="main col-xs-12 col-md-11 mt-3">
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="list-event" role="tabpanel" aria-labelledby="list-event-list">
+        <div class="row justify-content-end" sytle="background-color: red;" width=1000px>
+          <a class="btn btn-primary mr-3" href="/event/create" style="float: right;">新イベントを作る</a>
+        </div>
+
         <ul class="nav nav-tabs" id="myEventTab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="event_tab" data-toggle="tab" href="#event" role="tab" aria-controls="event" aria-selected="true">一覽</a>
@@ -58,8 +62,8 @@
         </div>
         <div class="row">
           @foreach(Auth::user()->teams as $team)
-            <div class="col-md-3 mt-3">
-            @include('layouts.card-team')
+            <div class="col-md-3 col-sm-3 col-xs-6 mt-3">
+              @include('layouts.card-team')
             </div>
           @endforeach
         </div>
@@ -67,8 +71,8 @@
       <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
         プロフィール
       </div>
-
     </div>
   </div>
 </div>
+
 @endsection

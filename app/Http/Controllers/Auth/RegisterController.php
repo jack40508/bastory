@@ -35,7 +35,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
         $this->middleware('guest');
     }
@@ -54,9 +54,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'gender' => ['required','boolean'],
-            'year'  => ['required','string'],
-            'mounth'  => ['required','string'],
-            'day'  => ['required','string'],
+            'birthday' => ['required','string'],
+            'photo' => ['required','file'],
         ]);
     }
 
@@ -68,13 +67,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $user = User::orderby('id','desc')->first();
+
+        $photo_file = $data['photo'];
+        $photo_path = $data['photo']->path();
+        $photo_extension = $data['photo']->extension();
+        $photo_filename = 'user_profile_3.jpg';
+        $photo_upload_success = $photo_file->move('img/user_profile', $photo_filename, $photo_extension);
+
         return User::create([
             'name' => $data['name'],
             'nickname' => $data['nickname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'birthday' => '2019-3-10',
+            'birthday' => $data['birthday'],
             'gender'  =>  $data['gender'],
         ]);
+
     }
 }

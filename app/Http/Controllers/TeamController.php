@@ -47,9 +47,9 @@ class TeamController extends Controller
     {
         //
         $this->team->createFromUser($request);
+        $newteam = $this->team->getNewTeam();
 
-
-        return redirect()->back();
+        return redirect('team/'.$newteam->id);
     }
 
     /**
@@ -61,9 +61,14 @@ class TeamController extends Controller
     public function show(Team $team)
     {
         //
-        $events = $this->team->getUserEvents($team);
-
-        return view('team/show',compact('team','events'));
+        if($this->team->checkMember($team) == true){
+          $nowpage = "event";
+          $events = $this->team->getUserEvents($team);
+          return view('team/show',compact('team','events','nowpage'));
+        }
+        else{
+          return redirect('team/'.$team->id.'/profile');
+        }
     }
 
     /**
@@ -102,5 +107,58 @@ class TeamController extends Controller
     {
         //
         dd($team->id);
+    }
+
+    public function member($team_id)
+    {
+        $team = $this->team->getTeam($team_id);
+
+        if($this->team->checkMember($team) == true){
+          $nowpage = 'member';
+          return view('team/member',compact('team','nowpage'));
+        }
+        else{
+          return redirect('team/'.$team->id.'/profile');
+        }
+    }
+
+    public function profile($team_id)
+    {
+        $nowpage = 'profile';
+        $team = $this->team->getTeam($team_id);
+        return view('team/profile',compact('team','nowpage'));
+    }
+
+    public function search()
+    {
+        $nowpage = 'search';
+        return view('home/search',compact('nowpage'));
+    }
+
+    public function searchresult(Request $request)
+    {
+
+        $nowpage = 'search';
+        $teams = $this->team->searchTeam($request);
+        $condition = $request->condition;
+
+        return view('home/search',compact('nowpage','teams','condition'));
+    }
+
+    public function apply($team_id)
+    {
+        $this->team->apply($team_id);
+        $nowpage = "profile";
+        $team = $this->team->getTeam($team_id);
+
+        return redirect('team/'.$team->id.'/profile');
+    }
+
+    public function cancel_apply($team_id)
+    {
+      $this->team->cancel_apply($team_id);
+      $team = $this->team->getTeam($team_id);
+
+      return redirect('/myteam');
     }
 }

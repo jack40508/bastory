@@ -12,9 +12,19 @@
 */
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/','HomeController@index')->name('home');
+Route::get('/myteam','HomeController@team');
+Route::get('/myprofile','HomeController@profile');
+
+Route::get('/search','TeamController@search');
+Route::get('/search/searchresult','TeamController@searchresult');
 
 Route::put('/replyevent/{event_user_id}/{reply}','EventController@event_reply_update');
 
 Route::resource('/team','TeamController');
+Route::get('/team/{team_id}/member','TeamController@member');
+Route::get('/team/{team_id}/profile','TeamController@profile');
+Route::put('/teamuser/{team_id}','TeamController@apply');
+Route::put('/teamuser/{team_id}/destroy','TeamController@cancel_apply');
+
 Route::resource('/event','EventController');

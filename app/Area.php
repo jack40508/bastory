@@ -13,7 +13,6 @@ class Area extends Model
       'name',
     ];
 
-    public function teams()
     public function teams(){
       return $this->hasMany(Team::class);
     }

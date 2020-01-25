@@ -17,6 +17,7 @@ class CreateTeamUserTable extends Migration
             $table->bigIncrements('id');
             $table->integer('team_id');
             $table->integer('user_id');
+            $table->boolean('check');
             $table->timestamps();
         });
     }

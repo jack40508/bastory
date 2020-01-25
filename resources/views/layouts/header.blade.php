@@ -17,49 +17,73 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-dark sticky-top navbar-expand-md shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top navbar-expand-md shadow-sm">
       <a class="navbar-brand" href="/">
-        <img src="/img/home/logo_bastory.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="/img/home/logo_bastory.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
         Bastory
       </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo" aria-controls="navbarTogglerDemo" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Left Side Of Navbar -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a id="navbarLefttDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              チーム</a>
-            <div class="dropdown-menu" aria-labelledby="navbarRightDropdown">
-              <a class="dropdown-item" href="#">チームを一覧</a>
-              <a class="dropdown-item" href="#">チームを探す</a>
-              <a class="dropdown-item" href="#">チームを作る</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">私のチーム</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          @if(isset($team))
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="/team/{{ $team->id }}">{{ $team->name }}<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="/team/{{ $team->id }}">イベント<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="/team/{{ $team->id }}/member">メンバー<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="team/{{ $team->id }}/profile">プロフィール<span class="sr-only">(current)</span></a>
+            </li>
+          @else
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="/">{{ Auth::user()->name }}<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="/">イベント<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="/myteam">チーム<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="/myprofile">プロフィール<span class="sr-only">(current)</span></a>
+            </li>
+          @endif
+          {!! Form::open(['url'=>'/search/searchresult','method'=>'GET','class'=>'form-inline ml-3']) !!}
+            <div class="form-group row">
+              {!! Form::text('condition',"",['class'=>'form-control mr-sm-2','placeholder'=>'チーム番号/チーム名','required']) !!}
+              {!! Form::submit('検索',['class'=>'btn btn-secondary form-control my-2 my-sm-0']) !!}
             </div>
-          </li>
-        </ul>
-
-        <!-- Right Side Of Navbar -->
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a id="navbarRightDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarRightDropdown">
-              <a class="dropdown-item" href="{{ route('logout') }}"
-                  onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();">
-                  {{ __('ログアウト') }}
-              </a>
-
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-              </form>
-            </div>
-          </li>
+          {!! Form::close() !!}
         </ul>
       </div>
+
+      <!-- Right Side Of Navbar -->
+      <ul class="navbar-nav ml-auto d-none d-md-block">
+        <li class="nav-item dropdown">
+          <a id="navbarRightDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            {{ Auth::user()->name }} <span class="caret"></span>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarRightDropdown">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                {{ __('ログアウト') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+          </div>
+        </li>
+      </ul>
     </nav>
     <div class="container-fluid">
       @yield('content')
