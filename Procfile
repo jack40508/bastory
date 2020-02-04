@@ -1,1 +1,1 @@
-web: xampp/htdocs/bastory/public/ 
+"web: vendor/bin/heroku-php-apache2 public/" 
