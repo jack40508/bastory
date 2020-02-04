@@ -19,7 +19,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top navbar-expand-md shadow-sm">
       <a class="navbar-brand" href="/">
-        <img src="/img/home/logo_bastory.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
+        <img src="/img/home/icon_bastory.png" width="35" height="35" class="d-inline-block align-top" alt="logo icon">
         Bastory
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo" aria-controls="navbarTogglerDemo" aria-expanded="false" aria-label="Toggle navigation">

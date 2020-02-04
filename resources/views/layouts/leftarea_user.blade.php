@@ -14,6 +14,10 @@
     @if ($nowpage == "profile")
     active
     @endif">プロフィール</a>
+    <a href="/post" class="list-group-item list-group-item-action list-group-item-light bg-dark
+    @if ($nowpage == "post")
+    active
+    @endif">サインボード</a>
     <a href="/search" class="list-group-item list-group-item-action list-group-item-light bg-dark
     @if ($nowpage == "search")
     active

@@ -21,7 +21,10 @@
         <div class="row justify-content-end full_page">
           <div class="col-md-6">
             <div class="card text-white card_login">
-              <div class="card-header"><h1>Bastory</h1></div>
+              <div class="card-header">
+                <h1><img src="/img/home/icon_bastory.png" width="50" height="50" class="d-inline-block align-top" alt="logo icon"> Bastory</h1>
+                <!--<h1><img src="/img/home/logo.png" width="250" height="100" class="d-inline-block align-top" alt="logo icon"></h1>-->
+              </div>
                 <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">
                   @csrf

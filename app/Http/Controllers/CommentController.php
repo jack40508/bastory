@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Team\TeamRepository;
-use App\Team\Event\Event;
-use App\Team\Event\EventUser;
+use App\Post\Comment;
+use App\Post\CommentRepository;
 use Illuminate\Http\Request;
-use App\Team\Event\EventRepository;
 
-class EventController extends Controller
+class CommentController extends Controller
 {
-    public function __construct(EventRepository $event,TeamRepository $team)
-    {
-        $this->event = $event;
-        $this->team = $team;
+    public function __construct(CommentRepository $comment){
+      $this->comment = $comment;
     }
 
     /**
@@ -35,10 +30,6 @@ class EventController extends Controller
     public function create()
     {
         //
-        $eventtypes = $this->event->getEventtypeList();
-        $teams = $this->team->getUserTeams();
-
-        return view("/event/create",compact('eventtypes','teams'));
     }
 
     /**
@@ -47,21 +38,21 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$post_id)
     {
         //
-        $this->event->createEvent($request);
+        $this->comment->createComment($request->content,$post_id);
 
-        return redirect('/');
+        return redirect('post/'.$post_id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Event  $event
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(Comment $comment)
     {
         //
     }
@@ -69,10 +60,10 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Event  $event
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -81,10 +72,10 @@ class EventController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Event  $event
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -92,19 +83,11 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Event  $event
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy(Comment $comment)
     {
         //
-    }
-
-    public function event_reply_update(int $eventuser_id,int $reply)
-    {
-        //
-        $this->event->update_reply($eventuser_id,$reply);
-
-        return redirect()->back();
     }
 }

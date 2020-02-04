@@ -68,11 +68,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::orderby('id','desc')->first();
+        $id = $user->id+1;
 
         $photo_file = $data['photo'];
         $photo_path = $data['photo']->path();
         $photo_extension = $data['photo']->extension();
-        $photo_filename = 'user_profile_3.jpg';
+        $photo_filename = 'user_profile_'.$id.'.jpg';
         $photo_upload_success = $photo_file->move('img/user_profile', $photo_filename, $photo_extension);
 
         return User::create([

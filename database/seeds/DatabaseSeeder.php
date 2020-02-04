@@ -19,6 +19,11 @@ class DatabaseSeeder extends Seeder
         AreasTableSeeder::class,
         TeamUserTableSeeder::class,
         EventUserTableSeeder::class,
+        PostsTableSeeder::class,
+        CommentsTableSeeder::class,
+        PosttypeTableSeeder::class,
+        PositionTableSeeder::class,
+        UserPositionTableSeeder::class,
       ]);
     }
 }

@@ -28,5 +28,8 @@ Route::put('/teamuser/{team_id}','TeamController@apply');
 Route::put('/teamuser/{team_id}/{user_id}/check','TeamController@check_apply');
 Route::put('/teamuser/{team_id}/destroy','TeamController@cancel_apply');
 
-
 Route::resource('/event','EventController');
+
+Route::get('/post/search','PostController@search');
+Route::resource('/post','PostController');
+Route::resource('/post/{post_id}/comment','CommentController');

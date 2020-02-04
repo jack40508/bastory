@@ -1,28 +1,30 @@
 <?php
 
-namespace App;
+namespace App\Post;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Team\Team;
+use App\User;
 use App\Post\Post;
 
-class Area extends Model
+class Comment extends Model
 {
     //
-    protected $table = 'areas';
+    protected $table = 'comments';
     protected $fillable = [
-      'name',
+      'user_id',
+      'post_id',
+      'content',
     ];
 
     /*------------------------------------------------------------------------**
     ** Relation 定義                                                          **
     **------------------------------------------------------------------------*/
 
-    public function teams(){
-      return $this->hasMany(Team::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     public function posts(){
-      return $this->hasMany(Post::class);
+        return $this->belongsTo(Post::class);
     }
 }

@@ -8,6 +8,9 @@ use Illuminate\Notifications\Notifiable;
 
 use App\Team\Team;
 use App\Team\Event\Event;
+use App\Post\Post;
+use App\Post\Comment;
+use App\Player\Position;
 
 class User extends Authenticatable
 {
@@ -50,5 +53,17 @@ class User extends Authenticatable
 
     public function events(){
         return $this->belongsToMany(Event::class)->withPivot('id','reply');
+    }
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+    public function positions(){
+        return $this->belongsToMany(Position::class);
     }
 }

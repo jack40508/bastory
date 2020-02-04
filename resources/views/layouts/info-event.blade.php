@@ -56,7 +56,7 @@
         <div class="row">
           @foreach($event->players as $player)
             @if($player->pivot->reply == 1)
-            <div class="col-md-3">
+            <div class="col-3">
               <div class="card card-member align-items-center">
                 <div class="card-body">
                   <img class="profile-img-top" src="/img/user_profile/user_profile_{{ $player->id }}.jpg" alt="user_profile" style="width:12vh; height:12vh;">
@@ -72,7 +72,7 @@
         <div class="row">
           @foreach($event->players as $player)
             @if($player->pivot->reply == 0)
-            <div class="col-md-3">
+            <div class="col-3">
               <div class="card card-member align-items-center">
                 <div class="card-body">
                   <img class="profile-img-top" src="/img/user_profile/user_profile_{{ $player->id }}.jpg" alt="user_profile" style="width:12vh; height:12vh;">
@@ -88,7 +88,7 @@
         <div class="row">
           @foreach($event->players as $player)
             @if($player->pivot->reply == -1)
-            <div class="col-md-3">
+            <div class="col-3">
               <div class="card card-member align-items-center">
                 <div class="card-body">
                   <img class="profile-img-top" src="/img/user_profile/user_profile_{{ $player->id }}.jpg" alt="user_profile" style="width:12vh; height:12vh;">

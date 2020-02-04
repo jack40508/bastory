@@ -62,6 +62,17 @@
                     {!! Form::label('誕生日：',"",['class'=>'col-md-4 text-md-right']) !!}
                     {!! Form::date('birthday',"",['class'=>'form-control col-md-6', 'required', 'autocomplete'=>'birthday']) !!}
                   </div>
+                  <!--
+                  <div class="form-group row">
+                    {!! Form::label('投／打：',"",['class'=>'col-md-4 text-md-right']) !!}
+                    {!! Form::select('pitch', ['L' => '左投', 'R' => '右投'],"",['class'=>'form-control col-md-2 text-md-right']); !!}　
+                    {!! Form::select('hit', ['L' => '左打', 'R' => '右打'],"",['class'=>'form-control col-md-2 text-md-right']); !!}
+                  </div>
+                  <div class="form-group row">
+                    {!! Form::label('ポジション：',"",['class'=>'col-md-4 text-md-right']) !!}
+                    {!! Form::select('pitch', ['1' => '投手', '2' => '捕手'],"",['class'=>'form-control col-md-4 text-md-right']); !!}　
+                  </div>
+                  -->
                   <div class="form-group row">
         		        {!! Form::label('写真：',"",['class'=>'col-md-4 text-md-right']) !!}
                     {!! Form::file('photo',['required']) !!}

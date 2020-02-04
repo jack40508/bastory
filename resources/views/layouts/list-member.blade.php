@@ -11,7 +11,7 @@
     </div>
   </div>
 </div>
-<HR width="100%" SIZE=7>
+<hr width="100%" SIZE=7>
 <div class="row">
   <h3>メンバー</h3>
 </div>
@@ -31,7 +31,7 @@
     @endif
   @endforeach
 </div>
-<HR width="100%" SIZE=7>
+<hr width="100%" SIZE=7>
 <div class="row">
   <h3>申込中</h3>
 </div>

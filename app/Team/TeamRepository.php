@@ -27,6 +27,12 @@ class TeamRepository
     	return $teams;
     }
 
+		public function getUserTeams(){
+			$teams = Auth::user()->teams->pluck('name', 'id');
+
+			return $teams;
+		}
+
 		public function getTeam($team_id){
 			$team = $this->team->where('id',$team_id)->first();
 

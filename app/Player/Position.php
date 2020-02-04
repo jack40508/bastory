@@ -1,28 +1,24 @@
 <?php
 
-namespace App;
+namespace App\Player;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Team\Team;
-use App\Post\Post;
+use App\User;
 
-class Area extends Model
+class Position extends Model
 {
     //
-    protected $table = 'areas';
+    protected $table = 'positions';
     protected $fillable = [
       'name',
+      'en_name',
     ];
 
     /*------------------------------------------------------------------------**
     ** Relation 定義                                                          **
     **------------------------------------------------------------------------*/
 
-    public function teams(){
-      return $this->hasMany(Team::class);
-    }
-
-    public function posts(){
-      return $this->hasMany(Post::class);
+    public function players(){
+        return $this->belongsToMany(User::class);
     }
 }

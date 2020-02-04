@@ -39,6 +39,10 @@ class Team extends Model
         return $this->belongsTo(User::class)->where('id', $this->leader_id);
     }
 
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
     /*------------------------------------------------------------------------**
     ** Function 定義                                                          **
     **------------------------------------------------------------------------*/
