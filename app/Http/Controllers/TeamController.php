@@ -10,6 +10,7 @@ class TeamController extends Controller
 {
     public function __construct(TeamRepository $team)
     {
+        $this->middleware('auth');
         $this->team = $team;
     }
 

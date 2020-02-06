@@ -6,7 +6,7 @@
     @include('layouts.leftarea_user')
   </div>
   <div class="main col-xs-11 col-md-11 mt-3">
-    <div class="row justify-content-end" sytle="background-color: red;" width=1000px>
+    <div class="row justify-content-end">
       <a class="btn btn-primary mr-3" href="/event/create" style="float: right;">新イベントを作る</a>
     </div>
 

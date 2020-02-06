@@ -1,9 +1,6 @@
 <div class="row">
-  <div class="col-md-3">
-    <img class="card-img-top" src="/img/team/logo/logo_{{ $event->team_id }}.jpg" alt="user_profile" style="width:20vh; height:20vh;">
-  </div>
-  <div class="col-md-1">
-
+  <div class="col-md-4 align-items-center">
+    <img class="card-img-top" src="/img/team/logo/logo_{{ $event->team_id }}.jpg" alt="team_logo" style="width:20vh; height:20vh;">
   </div>
   <div class="col-md-8">
     <h3>

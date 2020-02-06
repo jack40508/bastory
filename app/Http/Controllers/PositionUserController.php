@@ -2,22 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Team\TeamRepository;
-use App\Team\Event\Event;
-use App\Team\Event\EventUser;
+use App\PositionUser;
 use Illuminate\Http\Request;
-use App\Team\Event\EventRepository;
 
-class EventController extends Controller
+class PositionUserController extends Controller
 {
-    public function __construct(EventRepository $event,TeamRepository $team)
-    {
-        $this->middleware('auth');
-        $this->event = $event;
-        $this->team = $team;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -36,10 +25,6 @@ class EventController extends Controller
     public function create()
     {
         //
-        $eventtypes = $this->event->getEventtypeList();
-        $teams = $this->team->getUserTeams();
-
-        return view("/event/create",compact('eventtypes','teams'));
     }
 
     /**
@@ -51,18 +36,15 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
-        $this->event->createEvent($request);
-
-        return redirect('/');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Event  $event
+     * @param  \App\PositionUser  $positionUser
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(PositionUser $positionUser)
     {
         //
     }
@@ -70,10 +52,10 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Event  $event
+     * @param  \App\PositionUser  $positionUser
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit(PositionUser $positionUser)
     {
         //
     }
@@ -82,10 +64,10 @@ class EventController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Event  $event
+     * @param  \App\PositionUser  $positionUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, PositionUser $positionUser)
     {
         //
     }
@@ -93,19 +75,11 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Event  $event
+     * @param  \App\PositionUser  $positionUser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy(PositionUser $positionUser)
     {
         //
-    }
-
-    public function event_reply_update(int $eventuser_id,int $reply)
-    {
-        //
-        $this->event->update_reply($eventuser_id,$reply);
-
-        return redirect()->back();
     }
 }

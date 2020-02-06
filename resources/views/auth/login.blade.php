@@ -39,7 +39,7 @@
                 </div><!--card body-->
                 <div class="card-footer">
                   <div class="form-group">
-                    <button type="submit" class="btn btn-secondary form-control">
+                    <button type="submit" class="btn btn-primary form-control">
                         {{ __('ログイン') }}
                     </button>
                   </div>

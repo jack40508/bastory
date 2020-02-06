@@ -17,6 +17,8 @@ class UsersTableSeeder extends Seeder
         'nickname' => 'ジョウ',
         'birthday' => '1993-03-10',
         'gender'  =>  '1',
+        'hittype_id'  =>  '3',
+        'pitchtype_id'  =>  '2',
         'email' => 'jhouyouyu@gmail.com',
         'password'  =>  Hash::make('a129132037'),
       ]);
@@ -26,6 +28,8 @@ class UsersTableSeeder extends Seeder
         'nickname' => 'YoYu',
         'birthday' => '1993-03-10',
         'gender'  =>  '1',
+        'hittype_id'  =>  '1',
+        'pitchtype_id'  =>  '1',
         'email' => 'jack40508@gmail.com',
         'password'  =>  Hash::make('yoyu930310'),
       ]);

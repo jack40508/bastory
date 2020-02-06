@@ -2,7 +2,8 @@
   <div class="card-body">
     <div class="row">
       <div class="col-md-3 align-items-center" style="text-align:center;">
-        <img class="card-img-top" src="/img/team/logo/logo_{{ $event->team_id }}.jpg" alt="team_logo" style="width:25vh; height:25vh;">
+        <img class="card-img-top" src="/img/team/logo/logo_{{ $event->team_id }}.jpg" alt="team_logo" style="width:20vh; height:20vh;">
+        <br>
         <button type="button" class="btn btn-info mt-3" data-toggle="modal" data-target=".bd-modal-lg-{{ $tab }}-{{ $event->id }}">詳しく</button>
       </div>
       <div class="modal fade bd-modal-lg-{{ $tab }}-{{ $event->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

@@ -29,8 +29,13 @@ class PostRepository
 			return $post;
 		}
 
-		public function searchPosts($area_id){
+		public function searchPosts($area_id,$posttype_id){
+			if($area_id != null && $posttype_id != null)
+			$posts = $this->post->where('area_id',$area_id)->where('posttype_id',$posttype_id)->get();
+			elseif($area_id != null && $posttype_id == null)
 			$posts = $this->post->where('area_id',$area_id)->get();
+			elseif($area_id == null && $posttype_id != null)
+			$posts = $this->post->where('posttype_id',$posttype_id)->get();
 
       return $posts;
     }
@@ -60,5 +65,11 @@ class PostRepository
 			$post->status = true;
 			$post->save();
 
+		}
+
+		public function closePost($post_id){
+			$post = $this->post->where('id',$post_id)->first();
+			$post->status = 0;
+			$post->save();
 		}
 }

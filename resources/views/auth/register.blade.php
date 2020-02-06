@@ -62,17 +62,48 @@
                     {!! Form::label('誕生日：',"",['class'=>'col-md-4 text-md-right']) !!}
                     {!! Form::date('birthday',"",['class'=>'form-control col-md-6', 'required', 'autocomplete'=>'birthday']) !!}
                   </div>
-                  <!--
                   <div class="form-group row">
                     {!! Form::label('投／打：',"",['class'=>'col-md-4 text-md-right']) !!}
-                    {!! Form::select('pitch', ['L' => '左投', 'R' => '右投'],"",['class'=>'form-control col-md-2 text-md-right']); !!}　
-                    {!! Form::select('hit', ['L' => '左打', 'R' => '右打'],"",['class'=>'form-control col-md-2 text-md-right']); !!}
+                    {!! Form::select('pitchtype', ['1' => '右投', '2' => '左投', '3' => '両投'],"1",['class'=>'form-control col-md-2 text-md-right', 'autocomplete'=>'pitchtype']) !!}
+                    {!! Form::select('hittype', ['1' => '右打', '2' => '左打', '3' => '両打'],"1",['class'=>'form-control col-md-2 text-md-right', 'autocomplete'=>'hittype']) !!}
                   </div>
                   <div class="form-group row">
                     {!! Form::label('ポジション：',"",['class'=>'col-md-4 text-md-right']) !!}
-                    {!! Form::select('pitch', ['1' => '投手', '2' => '捕手'],"",['class'=>'form-control col-md-4 text-md-right']); !!}　
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-md-1">
+                          {!! Form::checkbox('positions[]', '1', false, ['class'=>'form-control', 'autocomplete'=>'gender']) !!}投手
+                        </div>
+                        <div class="col-md-1">
+                          {!! Form::checkbox('positions[]', '2', false, ['class'=>'form-control', 'autocomplete'=>'gender']) !!}捕手
+                        </div>
+                        <div class="col-md-1">
+                          {!! Form::checkbox('positions[]', '3', false, ['class'=>'form-control', 'autocomplete'=>'gender']) !!}一塁手
+                        </div>
+                        <div class="col-md-1">
+                          {!! Form::checkbox('positions[]', '4', false, ['class'=>'form-control', 'autocomplete'=>'gender']) !!}二塁手
+                        </div>
+                        <div class="col-md-1">
+                          {!! Form::checkbox('positions[]', '5', false, ['class'=>'form-control', 'autocomplete'=>'gender']) !!}三塁手
+                        </div>
+                        <div class="col-md-1">
+                          {!! Form::checkbox('positions[]', '6', false, ['class'=>'form-control', 'autocomplete'=>'gender']) !!}遊撃手
+                        </div>
+                        <div class="col-md-1">
+                          {!! Form::checkbox('positions[]', '7', false, ['class'=>'form-control', 'autocomplete'=>'gender']) !!}左翼手
+                        </div>
+                        <div class="col-md-1">
+                          {!! Form::checkbox('positions[]', '8', false, ['class'=>'form-control', 'autocomplete'=>'gender']) !!}中堅手
+                        </div>
+                        <div class="col-md-1">
+                          {!! Form::checkbox('positions[]', '9', false, ['class'=>'form-control', 'autocomplete'=>'gender']) !!}右翼手
+                        </div>
+                        <div class="col-md-1">
+                          {!! Form::checkbox('positions[]', '10', false, ['class'=>'form-control', 'autocomplete'=>'gender']) !!}指名打者
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  -->
                   <div class="form-group row">
         		        {!! Form::label('写真：',"",['class'=>'col-md-4 text-md-right']) !!}
                     {!! Form::file('photo',['required']) !!}
@@ -80,7 +111,7 @@
                 </div><!--card body-->
                 <div class="card-footer">
                   <div class="form-group">
-                    {!! Form::submit('アカウント作成',['class'=>'btn btn-secondary form-control']) !!}
+                    {!! Form::submit('アカウント作成',['class'=>'btn btn-success form-control']) !!}
                     {!! Form::close() !!}
                   </div>
                 </form>

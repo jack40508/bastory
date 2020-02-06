@@ -11,6 +11,8 @@ use App\Team\Event\Event;
 use App\Post\Post;
 use App\Post\Comment;
 use App\Player\Position;
+use App\Player\Hittype;
+use App\Player\Pitchtype;
 
 class User extends Authenticatable
 {
@@ -22,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','nickname','birthday','gender',
+        'name', 'email', 'password','nickname','birthday','gender','hittype_id','pitchtype_id'
     ];
 
     /**
@@ -65,5 +67,13 @@ class User extends Authenticatable
 
     public function positions(){
         return $this->belongsToMany(Position::class);
+    }
+
+    public function hittype(){
+        return $this->belongsTo(Hittype::class);
+    }
+
+    public function pitchtype(){
+        return $this->belongsTo(Pitchtype::class);
     }
 }

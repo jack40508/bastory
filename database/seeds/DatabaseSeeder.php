@@ -23,7 +23,9 @@ class DatabaseSeeder extends Seeder
         CommentsTableSeeder::class,
         PosttypeTableSeeder::class,
         PositionTableSeeder::class,
-        UserPositionTableSeeder::class,
+        PositionUserTableSeeder::class,
+        HittypeTableSeeder::class,
+        PitchtypeTableSeeder::class,
       ]);
     }
 }

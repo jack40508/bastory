@@ -54,6 +54,9 @@
             <li class="nav-item d-md-none">
               <a class="nav-link" href="/myprofile">プロフィール<span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item d-md-none">
+              <a class="nav-link" href="/post">サインボード<span class="sr-only">(current)</span></a>
+            </li>
           @endif
           {!! Form::open(['url'=>'/search/searchresult','method'=>'GET','class'=>'form-inline ml-3']) !!}
             <div class="form-group row">

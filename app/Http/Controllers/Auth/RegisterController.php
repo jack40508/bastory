@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Player\PositionUser;
 
 class RegisterController extends Controller
 {
@@ -55,6 +56,9 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'gender' => ['required','boolean'],
             'birthday' => ['required','string'],
+            'hittype' =>  ['required','integer'],
+            'pitchtype' =>  ['required','integer'],
+            'positions' =>  ['required','array'],
             'photo' => ['required','file'],
         ]);
     }
@@ -70,6 +74,13 @@ class RegisterController extends Controller
         $user = User::orderby('id','desc')->first();
         $id = $user->id+1;
 
+        for ($i=0; $i < count($data['positions']); $i++) {
+          PositionUser::create([
+            'user_id' => $id,
+            'position_id' => $data['positions'][$i],
+          ]);
+        }
+
         $photo_file = $data['photo'];
         $photo_path = $data['photo']->path();
         $photo_extension = $data['photo']->extension();
@@ -83,6 +94,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'birthday' => $data['birthday'],
             'gender'  =>  $data['gender'],
+            'hittype_id'  =>  $data['hittype'],
+            'pitchtype_id'  =>  $data['pitchtype'],
         ]);
 
     }

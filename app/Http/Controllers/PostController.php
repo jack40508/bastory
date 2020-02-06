@@ -12,6 +12,7 @@ class PostController extends Controller
 {
     public function __construct(PostRepository $post,TeamRepository $team,CommentRepository $comment)
     {
+        $this->middleware('auth');
         $this->post = $post;
         $this->team = $team;
         $this->comment = $comment;
@@ -28,8 +29,9 @@ class PostController extends Controller
         $nowpage = "post";
         $posts =  $this->post->getAllPosts();
         $areas = $this->post->getAreaList();
+        $posttypes = $this->post->getPosttypeList();
 
-        return view('post/index',compact('nowpage','posts','areas'));
+        return view('post/index',compact('nowpage','posts','areas','posttypes'));
     }
 
     /**
@@ -117,16 +119,26 @@ class PostController extends Controller
         //
         $nowpage = "post";
         $areas = $this->post->getAreaList();
+        $posttypes = $this->post->getPosttypeList();
+        $search_area_id = null;
+        $search_posttype_id = null;
 
-        if(is_null($request->area))
+        if(is_null($request->area) && is_null($request->posttype))
         $posts =  $this->post->getAllPosts();
         else
         {
-          $posts =  $this->post->searchPosts($request->area);
+          $posts =  $this->post->searchPosts($request->area,$request->posttype);
           $search_area_id = $request->area;
+          $search_posttype_id = $request->posttype;
         }
 
+        return view('post/index',compact('nowpage','posts','areas','posttypes','search_area_id','search_posttype_id'));
+    }
 
-        return view('post/index',compact('nowpage','posts','areas','search_area_id'));
+    public function close($post_id){
+
+        $this->post->closePost($post_id);
+
+        return redirect('post/'.$post_id);
     }
 }

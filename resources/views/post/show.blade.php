@@ -6,7 +6,14 @@
     @include('layouts.leftarea_user')
   </div>
   <div class="main col-xs-11 col-md-11 mt-3">
-    <div class="card">
+    @if(Auth::user()->id == $post->user_id && $post->status == true)
+    <div class="row justify-content-end mt-3">
+      {{ Form::open(['url'=>'/post/close/'.$post->id, 'method'=>'put']) }}
+      {!! Form::submit('募集終了',['class'=>'btn btn-danger mr-3']) !!}
+      {{Form::close()}}
+    </div>
+    @endif
+    <div class="card mt-3">
       <div class="card-header">
         <h1>{{ $post->title }}</h1>
       </div>

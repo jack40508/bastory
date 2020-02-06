@@ -39,7 +39,7 @@ class PositionTableSeeder extends Seeder
         ]);
 
         Position::create([
-          'name' => '游',
+          'name' => '遊',
           'en_name' => 'SS',
         ]);
 

@@ -8,8 +8,13 @@
   <li class="list-group-item">
     {!! Form::open(['url'=>'/post/'.$post->id.'/comment','method'=>'POST']) !!}
     <div class="form-group row">
+      @if($post->status == true)
       {!! Form::textarea('content', null, ['class'=>'form-control col-md-9','required','placeholder' => 'コメントを追加','rows' => 1]) !!}
       {!! Form::submit('投稿する',['class'=>'btn btn-primary form-control col-md-2 col-xs-6 ml-3']) !!}
+      @else
+      {!! Form::textarea('content', null, ['class'=>'form-control col-md-9','required','placeholder' => 'コメントを追加','rows' => 1, 'disabled']) !!}
+      {!! Form::submit('募集終了',['class'=>'btn btn-primary form-control col-md-2 col-xs-6 ml-3', 'disabled']) !!}
+      @endif
     </div>
     {!! Form::close() !!}
   </li>

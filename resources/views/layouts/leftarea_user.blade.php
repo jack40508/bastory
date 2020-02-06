@@ -1,5 +1,5 @@
 <div class="mt-5">
-  <img class="profile-img-top" src="/img/user_profile/user_profile_{{ Auth::user()->id }}.jpg" alt="user_profile" style="width:25vh; height:25vh;">
+  <img class="profile-img-top" src="/img/user_profile/user_profile_{{ Auth::user()->id }}.jpg" alt="user_profile" style="width:20vh; height:20vh;">
   <h3 class="mt-2">{{ Auth::user()->name }}</h3>
   <div class="list-group list-group-flush">
     <a href="/" class="list-group-item list-group-item-action list-group-item-light bg-dark

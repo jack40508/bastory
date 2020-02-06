@@ -28,7 +28,7 @@ class TeamRepository
     }
 
 		public function getUserTeams(){
-			$teams = Auth::user()->teams->pluck('name', 'id');
+			$teams = Auth::user()->teams->where('pivot.check',1)->pluck('name', 'id');
 
 			return $teams;
 		}
