@@ -81,7 +81,9 @@ class TeamController extends Controller
     public function edit(Team $team)
     {
         //
-        dd($team->id);
+        $areas = $this->team->getAreaList();
+
+        return view('/team/edit',compact('team','areas'));
 
     }
 
@@ -95,7 +97,12 @@ class TeamController extends Controller
     public function update(Request $request, Team $team)
     {
         //
-        dd($team->id);
+        $team->name = $request->name;
+        $team->area_id = $request->area;
+        $team->about = $request->about;
+        $team->save();
+
+        return redirect();
     }
 
     /**

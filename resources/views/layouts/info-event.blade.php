@@ -58,6 +58,11 @@
                 <div class="card-body">
                   <img class="profile-img-top" src="/img/user_profile/user_profile_{{ $player->id }}.jpg" alt="user_profile" style="width:12vh; height:12vh;">
                   <h4>{{ $player->name }}</h4>
+                  <h5>
+                    @foreach( $player->positions as $position)
+                      {{ $position->name }}
+                    @endforeach
+                  </h5>
                 </div>
               </div>
             </div>
@@ -74,6 +79,11 @@
                 <div class="card-body">
                   <img class="profile-img-top" src="/img/user_profile/user_profile_{{ $player->id }}.jpg" alt="user_profile" style="width:12vh; height:12vh;">
                   <h4>{{ $player->name }}</h4>
+                  <h5>
+                    @foreach( $player->positions as $position)
+                      {{ $position->name }}
+                    @endforeach
+                  </h5>
                 </div>
               </div>
             </div>
@@ -90,6 +100,11 @@
                 <div class="card-body">
                   <img class="profile-img-top" src="/img/user_profile/user_profile_{{ $player->id }}.jpg" alt="user_profile" style="width:12vh; height:12vh;">
                   <h4>{{ $player->name }}</h4>
+                  <h5>
+                  @foreach( $player->positions as $position)
+                    {{ $position->name }}
+                  @endforeach
+                  </h5>
                 </div>
               </div>
             </div>
