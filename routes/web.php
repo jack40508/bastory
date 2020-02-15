@@ -34,3 +34,5 @@ Route::get('/post/search','PostController@search');
 Route::put('/post/close/{post_id}','PostController@close');
 Route::resource('/post','PostController');
 Route::resource('/post/{post_id}/comment','CommentController');
+
+Route::resource('/message','MessageController');

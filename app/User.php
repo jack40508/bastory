@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use Auth;
 use App\Team\Team;
 use App\Team\Event\Event;
 use App\Post\Post;
@@ -13,6 +14,7 @@ use App\Post\Comment;
 use App\Player\Position;
 use App\Player\Hittype;
 use App\Player\Pitchtype;
+use App\Message\Message;
 
 class User extends Authenticatable
 {
@@ -76,4 +78,33 @@ class User extends Authenticatable
     public function pitchtype(){
         return $this->belongsTo(Pitchtype::class);
     }
+
+    /*------------------------------------------------------------------------**
+    **Message Relation Function定義                                           **
+    **------------------------------------------------------------------------*/
+
+    public function messages(){
+        return Message::where(function ($query) {
+                $query->where('from',$this->id)
+                      ->orwhere('to',$this->id);
+                    })->get();
+    }
+
+    public function unreadMessages($sent_id){
+        return Message::where(function ($query) {
+                $query->where('from',$this->id)
+                      ->orwhere('to',$this->id);
+                    })->where('from',$sent_id)->where('is_read',0)->count();
+    }
+
+    public function countMessage(){
+        return Message::where(function ($query){
+                $query->where('from',$this->id)
+                      ->where('to',Auth::id());
+                    })->orwhere(function ($query){
+                $query->where('to',$this->id)
+                      ->where('from',Auth::id());
+                    })->count();
+    }
+
 }

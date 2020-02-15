@@ -22,5 +22,9 @@
     @if ($nowpage == "search")
     active
     @endif">サーチ</a>
+    <a href="/message" class="list-group-item list-group-item-action list-group-item-light bg-dark
+    @if ($nowpage == "message")
+    active
+    @endif">メッセージ</a>
   </div>
 </div>
