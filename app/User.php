@@ -97,6 +97,10 @@ class User extends Authenticatable
                     })->where('from',$sent_id)->where('is_read',0)->count();
     }
 
+    public function allUnreadMessages(){
+      return Message::where('to',$this->id)->where('is_read',0)->count();
+    }
+
     public function countMessage(){
         return Message::where(function ($query){
                 $query->where('from',$this->id)

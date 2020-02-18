@@ -1,7 +1,7 @@
 <div class="mt-5">
   <img class="profile-img-top" src="/img/user_profile/user_profile_{{ Auth::user()->id }}.jpg" alt="user_profile" style="width:20vh; height:20vh;">
   <h3 class="mt-2">{{ Auth::user()->name }}</h3>
-  <div class="list-group list-group-flush">
+  <div class="list-group list-group-flush left-user-list">
     <a href="/" class="list-group-item list-group-item-action list-group-item-light bg-dark
     @if ($nowpage == "event")
     active
@@ -25,6 +25,38 @@
     <a href="/message" class="list-group-item list-group-item-action list-group-item-light bg-dark
     @if ($nowpage == "message")
     active
-    @endif">メッセージ</a>
+    @endif">メッセージ
+    <div class="unreadmessage float-right">
+      @if(Auth::user()->allUnreadMessages())
+      <span class="pending badge badge-danger badge-pill" id="allunread">{{ Auth::user()->allUnreadMessages() }}</span>
+      @endif
+    </div>
+    </a>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    var pusher = new Pusher('b75318841c86d558d960', {
+      cluster: 'ap3',
+      forceTLS: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      //alert(JSON.stringify(data));
+      if({{ Auth::id() }} == data.to){
+        var pending = parseInt($('.unreadmessage').find('.pending').html());
+
+        if(pending){
+          //alert('has unread');
+          $('.unreadmessage').find('.pending').html(pending + 1);
+        }
+        else{
+          //alert('no unread');
+          $('.unreadmessage').append('<span class="pending" id="allunread">1</span>');
+        }
+      }
+    });
+  });
+</script>

@@ -8,7 +8,12 @@
   <div class="main col-xs-11 col-md-11 mt-3 item-middle-center">
     <div class="card">
       <div class="card-header">
+        <div class="row justify-content-between">
         <h1>{{ $team->name }}</h1>
+        @if(Auth::id() == $team->leader_id)
+        <h2><a class="btn btn-info mr-3" href="/team/{{ $team->id }}/edit" role="button">編集</a></h2>
+        @endif
+        </div>
       </div>
       <div class="card-body">
         @include('layouts.card-profile-team')

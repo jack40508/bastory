@@ -67,4 +67,31 @@ class MessageRepository
     $pusher->trigger('my-channel', 'my-event', $data);
   }
 
+	public function sendMessageByID($to,$message){
+		$from = Auth::id();
+
+		$data = new Message();
+    $data->from = $from;
+    $data->to = $to;
+    $data->message = $message;
+    $data->is_read = 0;
+    $data->save();
+
+		// pusher
+    $options = array(
+      'cluster' => 'ap3',
+      'useTLS' => true
+    );
+
+    $pusher = new Pusher(
+			'b75318841c86d558d960',
+	    '69175f918d8850251d41',
+	    '948530',
+	    $options
+    );
+
+    $data = ['from' => $from, 'to' => $to]; // sending from and to user id when pressed enter
+    $pusher->trigger('my-channel', 'my-event', $data);
+	}
+
 }

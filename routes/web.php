@@ -13,6 +13,7 @@
 Auth::routes();
 
 Route::get('/','HomeController@index')->name('home');
+Route::get('/home','HomeController@index')->name('home');
 Route::get('/myteam','HomeController@team');
 Route::get('/myprofile','HomeController@profile');
 
@@ -35,4 +36,5 @@ Route::put('/post/close/{post_id}','PostController@close');
 Route::resource('/post','PostController');
 Route::resource('/post/{post_id}/comment','CommentController');
 
+Route::post('/message/sendbyid/{to}','MessageController@sendbyid');
 Route::resource('/message','MessageController');

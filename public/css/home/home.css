@@ -21,6 +21,9 @@
   border-bottom: solid 1px lightgray;
 }
 
+.unreadmessage .badge-danger{
+  background-color: red;
+}
 
 /*In middle*/
 .item-middle-center{

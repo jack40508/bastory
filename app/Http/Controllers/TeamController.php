@@ -97,12 +97,9 @@ class TeamController extends Controller
     public function update(Request $request, Team $team)
     {
         //
-        $team->name = $request->name;
-        $team->area_id = $request->area;
-        $team->about = $request->about;
-        $team->save();
+        $this->team->updateTeam($request,$team);
 
-        return redirect();
+        return redirect('team/'.$team->id.'/profile');
     }
 
     /**

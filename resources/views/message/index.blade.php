@@ -9,7 +9,7 @@
     <div class="col-md-8" id="messages">
 
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" id="users">
       <div class="user-wrapper">
         <ul class="users">
           @foreach($m_users as $user)
@@ -72,7 +72,7 @@
         else{
           //if receiver is not selected, add notification for that user
           var pending = parseInt($('#' + data.from).find('.pending').html());
-          console.log(pending);
+          //console.log(pending);
           if(pending){
             //alert('has unread');
             $('#' + data.from).find('.pending').html(pending + 1);
@@ -85,10 +85,38 @@
       }
     });
 
+    //auto select user
+    if("{{ session('to_id') }}"){
+      receiver_id = "{{ session('to_id') }}";
+      $('.mymessage .user').removeClass('active');
+      $('#' + receiver_id).addClass('active');
+
+      $.ajax({
+        type: "get",
+        url: "message/" + receiver_id,
+        data: "",
+        cache:false,
+            success: function(data){
+              $('.mymessage #messages').html(data);
+              scrollToBottomFunc();
+            }
+      });
+    }
+
+    //select user
     $('.mymessage .user').click(function(){
       $('.mymessage .user').removeClass('active');
       $(this).addClass('active');
+      var allunread = parseInt($('.unreadmessage').find('.pending').html());
+      var thisunread = parseInt($(this).find('.pending').html());
       $(this).find('.pending').remove();
+
+
+      //update left-list pendding
+      if((allunread - thisunread) != 0)
+      $('.unreadmessage').find('.pending').html(allunread - thisunread);
+      else
+      $('.unreadmessage').find('.pending').remove();
 
       receiver_id = $(this).attr('id');
       $.ajax({
@@ -103,6 +131,7 @@
       });
     });
 
+    //send message
     $(document).on('keyup', '.input-text input', function (e){
       var message = $(this).val();
 
@@ -134,6 +163,8 @@
     function scrollToBottomFunc() {
       $('.mymessage .message-wrapper').animate({
         scrollTop: $('.mymessage .message-wrapper').get(0).scrollHeight}, 50);
+
+        $('#messagetext').focus();
     }
   });
 </script>

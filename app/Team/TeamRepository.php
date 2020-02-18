@@ -83,6 +83,20 @@ class TeamRepository
       $logo_upload_success = $logo_file->move('img/team/logo', $logo_filename, $logo_extension);
     }
 
+		public function updateTeam($request,$team){
+			$team->name = $request->name;
+			$team->area_id = $request->area;
+			$team->about = $request->about;
+			$team->save();
+
+			//Logo Save
+      $logo_file = $request->logo;
+      $logo_path = $request->logo->path();
+      $logo_extension = $request->logo->extension();
+      $logo_filename = 'logo_'.$team->id.'.jpg';
+      $logo_upload_success = $logo_file->move('img/team/logo', $logo_filename, $logo_extension);
+		}
+
 		public function searchTeam($request){
 
 			$teams = $this->team->where('name','like','%'.$request->condition.'%')->orwhere('id',$request->condition)->get();

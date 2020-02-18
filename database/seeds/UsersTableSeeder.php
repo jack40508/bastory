@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
         'hittype_id'  =>  '3',
         'pitchtype_id'  =>  '2',
         'email' => 'jhouyouyu@gmail.com',
-        'password'  =>  Hash::make('a129132037'),
+        'password'  =>  Hash::make('123456789'),
       ]);
 
       User::create([
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
         'hittype_id'  =>  '1',
         'pitchtype_id'  =>  '1',
         'email' => 'jack40508@gmail.com',
-        'password'  =>  Hash::make('yoyu930310'),
+        'password'  =>  Hash::make('123456789'),
       ]);
     }
 }

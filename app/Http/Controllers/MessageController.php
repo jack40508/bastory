@@ -51,6 +51,14 @@ class MessageController extends Controller
         $this->message->sendMessage($request);
     }
 
+    public function sendbyid($to,Request $request)
+    {
+        //
+        $this->message->sendMessageByID($to,$request->message);
+
+        return redirect('message')->with('to_id',$to);
+    }
+
     /**
      * Display the specified resource.
      *

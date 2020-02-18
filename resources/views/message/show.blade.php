@@ -13,5 +13,5 @@
 </div>
 
 <div class="input-text">
-  <input type="text" name="message" class="sumbit">
+  <input type="text" name="message" class="sumbit" id="messagetext">
 </div>
