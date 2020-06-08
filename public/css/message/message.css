@@ -13,7 +13,7 @@
 }
 
 .mymessage .user-wrapper{
-  height: 600px;
+  height: 80vh;
 }
 
 .mymessage .user{
@@ -60,7 +60,7 @@
 
 .mymessage .message-wrapper{
   padding: 10px;
-  height: 536px;
+  height: 75vh;
   background: #eeeeee;
 }
 

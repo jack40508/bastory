@@ -33,5 +33,16 @@ class UsersTableSeeder extends Seeder
         'email' => 'jack40508@gmail.com',
         'password'  =>  Hash::make('123456789'),
       ]);
+
+      User::create([
+        'name' => '楊岱鋼',
+        'nickname' => 'Yoh',
+        'birthday' => '1987-01-17',
+        'gender'  =>  '1',
+        'hittype_id'  =>  '1',
+        'pitchtype_id'  =>  '1',
+        'email' => 'giant02@gmail.com',
+        'password'  =>  Hash::make('123456789'),
+      ]);
     }
 }

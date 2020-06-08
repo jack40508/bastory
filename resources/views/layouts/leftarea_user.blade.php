@@ -54,7 +54,7 @@
         }
         else{
           //alert('no unread');
-          $('.unreadmessage').append('<span class="pending" id="allunread">1</span>');
+          $('.unreadmessage').append('<span class="pending badge badge-danger badge-pill" id="allunread">1</span>');
         }
       }
     });

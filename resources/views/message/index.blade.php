@@ -113,7 +113,7 @@
 
 
       //update left-list pendding
-      if((allunread - thisunread) != 0)
+      if((allunread - thisunread) > 0)
       $('.unreadmessage').find('.pending').html(allunread - thisunread);
       else
       $('.unreadmessage').find('.pending').remove();

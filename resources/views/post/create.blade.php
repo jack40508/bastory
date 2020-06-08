@@ -7,7 +7,7 @@
   </div>
   <div class="main col-xs-11 col-md-11 mt-3">
     <div class="card text-white bg-dark">
-      <div class="card-header"><h2>新規チーム</h2></div>
+      <div class="card-header"><h2>新規募集</h2></div>
         <div class="card-body">
           {!! Form::open(['url'=>'/post','method'=>'POST']) !!}
           <div class="form-group row">

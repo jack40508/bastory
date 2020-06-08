@@ -28,5 +28,20 @@ class PositionUserTableSeeder extends Seeder
           'user_id' => '2',
           'position_id' => '6',
         ]);
+
+        PositionUser::create([
+          'user_id' => '3',
+          'position_id' => '7',
+        ]);
+
+        PositionUser::create([
+          'user_id' => '3',
+          'position_id' => '8',
+        ]);
+
+        PositionUser::create([
+          'user_id' => '3',
+          'position_id' => '9',
+        ]);
     }
 }
