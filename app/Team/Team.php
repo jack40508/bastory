@@ -28,7 +28,7 @@ class Team extends Model
     }
 
     public function players(){
-        return $this->belongsToMany(User::class)->withPivot('id','check');;
+        return $this->belongsToMany(User::class)->withPivot('id','check');
     }
 
     public function events(){
