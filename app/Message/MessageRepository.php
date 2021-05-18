@@ -57,9 +57,9 @@ class MessageRepository
     );
 
     $pusher = new Pusher(
-			'b75318841c86d558d960',
-	    '69175f918d8850251d41',
-	    '948530',
+			env('PUSHER_APP_KEY'),
+      env('PUSHER_APP_SECRET'),
+      env('PUSHER_APP_ID'),
 	    $options
     );
 
@@ -84,9 +84,9 @@ class MessageRepository
     );
 
     $pusher = new Pusher(
-			'b75318841c86d558d960',
-	    '69175f918d8850251d41',
-	    '948530',
+			env('PUSHER_APP_KEY'),
+      env('PUSHER_APP_SECRET'),
+      env('PUSHER_APP_ID'),
 	    $options
     );
 
