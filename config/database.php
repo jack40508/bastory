@@ -4,7 +4,7 @@ use Illuminate\Support\Str;
 
 return [
 
-    $db_config = get_db_config();
+    'default' => $db_config = get_db_config();
 
     /*
     |--------------------------------------------------------------------------
