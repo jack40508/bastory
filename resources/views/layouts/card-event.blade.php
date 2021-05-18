@@ -116,7 +116,7 @@
                 height="300vw"
                 frameborder="0"
                 class="mt-1"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASvi7TntutPgnoPqmFkxLCCFyREeR8Sqk={{ $event->address }}"
+                src='https://www.google.com/maps/embed/v1/place?key={{ config("services.google-map.apikey") }}&q={{ $event->address }}''
                 allowfullscreen>
               </iframe>
             </div>

@@ -31,7 +31,7 @@
       height="300vw"
       frameborder="0"
       class="mt-1"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAZVWm0JDiD4kczQgKQjv9i2ej7byvGuwI&q={{ $event->address }}"
+      src='https://www.google.com/maps/embed/v1/place?key={{ config("services.google-map.apikey") }}&q={{ $event->address }}'
       allowfullscreen>
     </iframe>
   </div>
